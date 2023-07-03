@@ -1,0 +1,12 @@
+server:
+  web_name: "scribblog"
+  web_addr: "localhost:8080"
+
+log:
+  file_path: "../log"
+  file_name: "api-server.log"
+  max_size: 512                  #文件大小限制，单位MB
+  max_backups: 30                #最大保留日志文件数量
+  max_age: 365                   #日志保留天数
+  log_level: -1                  # -1 debug, 0 info, 1 warn, 2 error, 3 dpanic, 4 panic, 5 fatal
+  console: true                  #是否把错误日志打印到控制台
