@@ -2,10 +2,10 @@ package route
 
 import (
 	"github.com/kataras/iris/v12"
-	api_server "go-scribblog/repo/api-server"
+	apiserver "go-scribblog/repo/api-server"
 )
 
-type handler func(server *api_server.Server, ctx iris.Context)
+type handler func(server *apiserver.Server, ctx iris.Context)
 
 type routeHandler struct {
 	method  string
@@ -21,14 +21,14 @@ func newRouteHandler(method string, url string, handleFunc handler) *routeHandle
 	}
 }
 
-func routeWrapper(handleFunc handler, server *api_server.Server) func(iris.Context) {
+func routeWrapper(handleFunc handler, server *apiserver.Server) func(iris.Context) {
 	wrapperFunc := func(ctx iris.Context) {
 		handleFunc(server, ctx)
 	}
 	return wrapperFunc
 }
 
-func RegisterRouter(server *api_server.Server) {
+func RegisterRouter(server *apiserver.Server) {
 	for _, group := range routeGroupConfig {
 		partyRouter := server.App.Party(group.partyUrl)
 		for _, route := range group.routeHandles {

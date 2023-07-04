@@ -1,10 +1,10 @@
-package api_server
+package apiserver
 
 import (
 	"context"
 	"fmt"
 	"github.com/spf13/cobra"
-	api_server "go-scribblog/repo/api-server"
+	apiserver "go-scribblog/repo/api-server"
 	"go-scribblog/repo/api-server/conf"
 	"go-scribblog/repo/api-server/route"
 	"go-scribblog/repo/log"
@@ -44,7 +44,7 @@ func start() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	server := api_server.GetInstance(config, ctx)
+	server := apiserver.GetInstance(config, ctx)
 	if err != nil {
 		panic(err)
 	}
