@@ -12,7 +12,7 @@ var routeGroupConfig = []*routeGroup{
 	{
 		partyUrl: "api/greet",
 		routeHandles: []*routeHandler{
-			newRouteHandler("GET", "/hello", controller.Hello),
+			newRouteHandler("POST", "/hello", controller.Hello),
 		},
 		auth: false,
 	},

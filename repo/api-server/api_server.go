@@ -2,6 +2,7 @@ package api_server
 
 import (
 	"context"
+	"github.com/go-playground/validator/v10"
 	"github.com/kataras/iris/v12"
 	"go-scribblog/repo/api-server/conf"
 	"sync"
@@ -21,11 +22,13 @@ var once sync.Once
 func GetInstance(cfg *conf.Config, ctx context.Context) *Server {
 	// 生成 iris 实例
 	once.Do(func() {
+		app := iris.New()
+		app.Validator = validator.New() //为 iris App 绑定一个 validator 实例
 		server = &Server{
 			Name: cfg.Server.Name,
 			Conf: cfg,
 			ctx:  ctx,
-			App:  iris.New(),
+			App:  app,
 		}
 	})
 	return server

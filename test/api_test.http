@@ -1,1 +1,7 @@
-GET http://localhost:8080/api/greet/hello
+POST http://localhost:8080/api/greet/hello
+Content-Type: application/json
+
+{
+  "name": "kevin",
+  "age": 18
+}
